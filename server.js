@@ -5,15 +5,16 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/mean_app', {
+// Connect to MongoDB using Mongoose
+const uri = "mongodb+srv://chhatrapatisharma:uTY0HiB1WR0LABtu@khandalapp.o3fqw.mongodb.net/mean_app?retryWrites=true&w=majority";
+mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-});
+}).then(() => console.log('MongoDB connected to Atlas')).catch(err => console.error('Connection error:', err));
 
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => console.log('MongoDB connected'));
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => console.log('Connected to MongoDB Atlas'));
 
 // Define Schemas and Models
 const userSchema = new mongoose.Schema({
