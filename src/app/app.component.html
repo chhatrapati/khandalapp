@@ -1,0 +1,34 @@
+<div>
+  <h1>{{ title }}</h1>
+
+  <h2>Register User</h2>
+  <form (ngSubmit)="registerUser()">
+    <input [(ngModel)]="registrationData.fullName" name="fullName" placeholder="Full Name" required>
+    <input [(ngModel)]="registrationData.aadhaarNumber" name="aadhaarNumber" placeholder="Aadhaar Number" required>
+    <input [(ngModel)]="registrationData.dob" name="dob" placeholder="Date of Birth" type="date" required>
+
+    <h3>Address</h3>
+    <input [(ngModel)]="registrationData.address.area" name="area" placeholder="Area">
+    <input [(ngModel)]="registrationData.address.city" name="city" placeholder="City">
+    <input [(ngModel)]="registrationData.address.state" name="state" placeholder="State">
+    <input [(ngModel)]="registrationData.address.country" name="country" placeholder="Country">
+
+    <input [(ngModel)]="registrationData.gotra" name="gotra" placeholder="Gotra" required>
+    <input [(ngModel)]="registrationData.maritalStatus" name="maritalStatus" placeholder="Marital Status" required>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <h2>Add Relation</h2>
+  <form (ngSubmit)="addRelation()">
+    <input [(ngModel)]="relationData.personAadhaar" name="personAadhaar" placeholder="Person Aadhaar" required>
+    <input [(ngModel)]="relationData.relativeAadhaar" name="relativeAadhaar" placeholder="Relative Aadhaar" required>
+    <input [(ngModel)]="relationData.relationType" name="relationType" placeholder="Relation Type" required>
+    <select [(ngModel)]="relationData.isAlive" name="isAlive">
+      <option [value]="true">Alive</option>
+      <option [value]="false">Deceased</option>
+    </select>
+
+    <button type="submit">Add Relation</button>
+  </form>
+</div>
